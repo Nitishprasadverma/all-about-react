@@ -38,52 +38,98 @@ const intitalItems = [
 
 
 // editable menu function
+//editiable menu list but not automatically changes in para
+// function Menu() {
+//     const [items, setItmes] = useState(intitalItems);
+//     const [selectedItem, setSelectedItem] = useState(items[0]);
 
-function Menu() {
-    const [items, setItmes] = useState(intitalItems);
-    const [selectedItem, setSelectedItem] = useState(items[0]);
+//     function handleItemChange(id, e) {
+//         setItmes(items.map(item => {
+//             if (item.id === id) {
+//                 return {
+//                     ...item,
+//                     title: e.target.value
+//                 }
+//             }
+//             else {
+//                 return item;
+//             }
+//         }))
+//     }
+
+//     return (
+//         <>
+//             <h2>What's your travel snack?</h2>
+
+//             <ul>
+
+//                 {items.map((item, index) => (
+//                     <li key={item.id}>
+//                         <input
+//                             value={item.title}
+//                             onChange={e => {
+//                                 handleItemChange(item.id, e)
+//                             }}
+//                         />
+//                         {' '}
+//                         <button onClick={() => {
+//                             setSelectedItem(item);
+//                         }} >Choose</button>
+
+//                     </li>
+//                 ))}
+//             </ul>
+
+//             <p>You Picked {selectedItem.title}</p>
+
+//         </>
+//     )
+// }
+
+function Menu(){
+    const [items, setItems] = useState(intitalItems);
+    const [selectedId, setSelectedId] = useState(0);
+
+    const selectedItem = items.find(item =>
+        item.id === selectedId
+      );
 
     function handleItemChange(id, e) {
-        setItmes(items.map(item => {
-            if (item.id === id) {
+        setItems(items.map(item =>{
+            if(item.id === id){
                 return {
                     ...item,
-                    title: e.target.value
+                    title: e.target.value,
                 }
             }
-            else {
-                return item;
-            }
+            else return item;
         }))
     }
 
     return (
         <>
-            <h2>What's your travel snack?</h2>
+        <h2>What's your travel snack?</h2>
 
-            <ul>
+        <ul>
 
-                {items.map((item, index) => (
-                    <li key={item.id}>
-                        <input
-                            value={item.title}
-                            onChange={e => {
-                                handleItemChange(item.id, e)
-                            }}
-                        />
-                        {' '}
-                        <button onClick={() => {
-                            setSelectedItem(item);
-                        }} >Choose</button>
+            {items.map((item,index) => (
+                <li key={item.id}>
+                    <input
+                    value={item.title}
+                    onChange={e =>{
+                        handleItemChange(item.id, e)
+                    }}
+                    />
+                    {' '}
 
-                    </li>
-                ))}
-            </ul>
-
-            <p>You Picked {selectedItem.title}</p>
-
+                    <button onClick={() =>{
+                        setSelectedId(item.id)
+                    }}>Choose</button>  
+                </li>
+            ))}
+        </ul>
+        <p>You picked {selectedItem.title}.</p>
         </>
     )
 }
-
 export default Menu
