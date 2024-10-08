@@ -12,9 +12,13 @@ function App() {
  const[convertedAmount, setConvertedAmount] = useState(0)
 
  const currencyInfo = useCurrencyInfo(from)
-console.log(currencyInfo);
- const options = Object.keys(currencyInfo);
+// console.log(currencyInfo);
+ 
+const options = currencyInfo && Object.keys(currencyInfo).length > 0 
+   ? Object.keys(currencyInfo)
+   : [""];
 
+  //  console.log(options);
  const swap = () => {
   setFrom(to)
   setTo(from)
@@ -22,13 +26,17 @@ console.log(currencyInfo);
   setAmount(convertedAmount)
  }
 
- const convert = () =>{
-  setConvertedAmount(amount * currencyInfo[to])
- }
+ const convert = () => {
+  if (currencyInfo && currencyInfo[to]) {
+    setConvertedAmount(amount * currencyInfo[to]);
+  }
+};
  return (
   <div
       className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
-      
+      style={{
+        backgroundImage: `url('https://images.unsplash.com/photo-1694063802127-201ffc9bf507?q=80&w=2098&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+    }}
   >
       <div className="w-full">
           <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
@@ -43,7 +51,7 @@ console.log(currencyInfo);
                           label="From"
                           amount={amount}
                           currencyOptions={options}
-                          onCurrencyChange={(currency) => setAmount(amount)}
+                          onCurrencyChange={(currency) => setFrom(currency)}
                           selectCurrency={from}
                           onAmountChange={(amount) => setAmount(amount)}
                       />
@@ -63,7 +71,7 @@ console.log(currencyInfo);
                           amount={convertedAmount}
                           currencyOptions={options}
                           onCurrencyChange={(currency) => setTo(currency)}
-                          selectCurrency={from}
+                          selectCurrency={to}
                           amountDisable
                           
                       />

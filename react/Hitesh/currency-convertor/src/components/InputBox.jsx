@@ -6,7 +6,7 @@ function InputBox({
     onAmountChange,
     onCurrencyChange,
     currencyOptions = [],
-    selectCurrency = 'usd',
+    selectCurrency = ["usd", "inr"],
     amountDisable = false,
     currencyDisable = false,
     className = "",
@@ -28,7 +28,15 @@ function InputBox({
                     placeholder="Amount"
                     disabled={amountDisable}
                     value={amount}
-                    onChange={(e) => onAmountChange && onAmountChange(Number(e.target.value))}
+                    onChange= {
+                        (e) => {
+                            const value = Number(e.target.value);
+
+                            if(value >= 0) {
+                                onAmountChange && onAmountChange(value)
+                            }
+                        }
+                    }
 
 
                 />
