@@ -3,9 +3,21 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import Person from '../State/Person.jsx'
+import CustomInput from '../State/Input.jsx'
+import Form from '../State/Form.jsx'
+import Function from '../State/Form1.jsx'
+import TrafficLight from '../exercise/Traffic.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Person />
+    {/* <Person /> */}
+{/* 
+    <CustomInput /> */}
+
+    {/* <Form /> */}
+
+    {/* <Function /> */}
+
+    <TrafficLight />
   </StrictMode>,
 )
