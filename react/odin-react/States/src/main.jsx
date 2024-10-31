@@ -8,6 +8,8 @@ import Form from '../State/Form.jsx'
 import Function from '../State/Form1.jsx'
 import TrafficLight from '../exercise/Traffic.jsx'
 import FeedbackForm from '../State/Form2.jsx'
+import Time from '../exercise/Clock/Src/App.jsx'
+import TravelPlan from '../exercise/Packing/Src/App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -21,6 +23,10 @@ createRoot(document.getElementById('root')).render(
 
     {/* <TrafficLight /> */}
 
-    <FeedbackForm />
+    {/* <FeedbackForm /> */}
+
+    {/* <Time /> */}
+
+    <TravelPlan />
   </StrictMode>
 )
