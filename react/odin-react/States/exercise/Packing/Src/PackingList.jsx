@@ -13,7 +13,7 @@ export default function PackingList({
                     <input type="checkbox" 
                     checked ={item.packed}
                     onChange={e => {
-                        oncChangeItem({...item, packed:e.target.checked})
+                        onChangeItem({...item, packed:e.target.checked})
                     }}
                     />
 
