@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
+
 import App from './App.jsx'
 import Person from '../State/Person.jsx'
 import CustomInput from '../State/Input.jsx'
@@ -11,6 +12,7 @@ import FeedbackForm from '../State/Form2.jsx'
 import Time from '../exercise/Clock/Src/App.jsx'
 import TravelPlan from '../exercise/Packing/Src/App.jsx'
 import MailClient from '../exercise/Letter/Src/App.jsx'
+import MailClient1 from '../exercise/MultiSelection/App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -29,6 +31,8 @@ createRoot(document.getElementById('root')).render(
     {/* <Time /> */}
 
    <MailClient />
+
+   <MailClient1 />
 
     {/* <TravelPlan /> */}
   </StrictMode>

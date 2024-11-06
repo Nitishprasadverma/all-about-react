@@ -10,15 +10,15 @@ export default function Letter({
             isHighlighted? 'highlighted' : ''
         }
         onFocus={() =>{
-            onHover(letter);
+            onHover(letter.id);
 
         }}
         onPointerMove={() =>{
-            onHover(letter);
+            onHover(letter.id);
         }}
         >
 <button onClick={() =>{
-    onToggleStar(letter)
+    onToggleStar(letter.id)
 }}>
     {letter.isStarred ? 'Unstar' : 'Star'}
 
