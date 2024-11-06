@@ -10,6 +10,7 @@ import TrafficLight from '../exercise/Traffic.jsx'
 import FeedbackForm from '../State/Form2.jsx'
 import Time from '../exercise/Clock/Src/App.jsx'
 import TravelPlan from '../exercise/Packing/Src/App.jsx'
+import MailClient from '../exercise/Letter/Src/App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -27,6 +28,8 @@ createRoot(document.getElementById('root')).render(
 
     {/* <Time /> */}
 
-    <TravelPlan />
+   <MailClient />
+
+    {/* <TravelPlan /> */}
   </StrictMode>
 )

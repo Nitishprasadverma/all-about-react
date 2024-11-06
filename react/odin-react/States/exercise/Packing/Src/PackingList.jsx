@@ -5,7 +5,7 @@ export default function PackingList({
 }) {
     return (
      <ul>
-
+        
        {
         items.map(item => (
             <li key={item.id}>

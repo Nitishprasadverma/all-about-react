@@ -1,0 +1,12 @@
+export const  initialLetters = [{
+    id:0,
+    subject:'Ready for adventure?',
+    isStarred:true
+},{id:1,
+    subject:'Time to check in!',
+    isStarred: false,
+},{
+    id:3,
+    subject:'Festival Begins in Just SEVEN Days!',
+    isStarred:false
+}]
