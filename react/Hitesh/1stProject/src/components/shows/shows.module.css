@@ -1,0 +1,19 @@
+.shows{
+    width: 100%;
+    /* height: 400px; */
+    background-color: #060707;
+    padding: 10px 2%;
+    /* display: flex; */
+    color: #ffff;
+}
+
+
+.showParent{
+    width: 100%;
+    /* height: 300px; */
+    /* background-color: blue; */
+    display: flex;
+    justify-content: space-between;
+}
+
+/*  */

@@ -1,0 +1,10 @@
+.show {
+    width: 17%;
+    height: 350px;
+    /* background-color: yellow; */
+}
+
+.show>img {
+    height: 100%;
+
+}
