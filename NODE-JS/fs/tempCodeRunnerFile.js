@@ -1,0 +1,1 @@
+const buf = new Buffer(1024);
