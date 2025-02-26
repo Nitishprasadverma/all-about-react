@@ -64,7 +64,7 @@ function App() {
               className='cursor-pointer'
               onChange={(e) => { setLength(e.target.value) }}
             />
-            <label >length:{length}</label>
+            <label>length:{length}</label>
           </div>
 
           <div className='flex intems-center gap-x-1'>
