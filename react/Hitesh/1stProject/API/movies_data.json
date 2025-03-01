@@ -1,0 +1,467 @@
+[
+    {
+        "name": "Inception",
+        "language": "English",
+        "genre": [
+            "Sci-Fi",
+            "Thriller"
+        ],
+        "featured": true,
+        "cast": [
+            "Leonardo DiCaprio",
+            "Joseph Gordon-Levitt",
+            "Elliot Page"
+        ],
+        "imageUrl": "https://m.media-amazon.com/images/I/71thFiIUSpL._AC_UF894,1000_QL80_.jpg",
+        "imdb": 8.8,
+        "runtime": 148,
+        "description": "A skilled thief is given a chance at redemption if he can successfully perform an almost impossible task: planting an idea inside someone's subconscious.",
+        "country": "USA",
+        "id": 1
+    },
+    {
+        "name": "Parasite",
+        "language": "Korean",
+        "genre": [
+            "Drama",
+            "Thriller"
+        ],
+        "featured": true,
+        "cast": [
+            "Song Kang-ho",
+            "Choi Woo-shik",
+            "Park So-dam"
+        ],
+        "imageUrl": "https://m.media-amazon.com/images/I/71O1C6AFpXL._AC_UF1000,1000_QL80_.jpg",
+        "imdb": 8.6,
+        "runtime": 132,
+        "description": "A poor family schemes to become employed by a wealthy household and infiltrate their lives through deception and clever tricks.",
+        "country": "South Korea",
+        "id": 2
+    },
+    {
+        "name": "Spirited Away",
+        "language": "Japanese",
+        "genre": [
+            "Animation",
+            "Adventure",
+            "Fantasy"
+        ],
+        "featured": false,
+        "cast": [
+            "Rumi Hiiragi",
+            "Miyu Irino",
+            "Mari Natsuki"
+        ],
+        "imageUrl": "https://images-cdn.ubuy.co.in/633ff43ff6db4e59a7420611-yuttz-spirited-away-poster-japan-anime.jpg",
+        "imdb": 8.6,
+        "runtime": 125,
+        "description": "Chihiro, a sullen young girl, wanders into a mysterious world where she meets magical beings and learns to be brave and compassionate.",
+        "country": "Japan",
+        "id": 3
+    },
+    {
+        "name": "The Dark Knight",
+        "language": "English",
+        "genre": [
+            "Action",
+            "Crime",
+            "Drama"
+        ],
+        "featured": true,
+        "cast": [
+            "Christian Bale",
+            "Heath Ledger",
+            "Aaron Eckhart"
+        ],
+        "imageUrl": "https://m.media-amazon.com/images/I/81IfoBox2TL.jpg",
+        "imdb": 9.0,
+        "runtime": 152,
+        "description": "Batman faces his toughest challenge yet as he fights against the anarchist criminal mastermind, The Joker, who seeks to destroy Gotham City.",
+        "country": "USA",
+        "id": 4
+    },
+    {
+        "name": "La La Land",
+        "language": "English",
+        "genre": [
+            "Drama",
+            "Musical",
+            "Romance"
+        ],
+        "featured": false,
+        "cast": [
+            "Ryan Gosling",
+            "Emma Stone",
+            "John Legend"
+        ],
+        "imageUrl": "https://m.media-amazon.com/images/I/81j4bDPgXQL.jpg",
+        "imdb": 8.0,
+        "runtime": 128,
+        "description": "In Los Angeles, an aspiring actress and a dedicated jazz musician struggle to maintain their blossoming romance amid their professional aspirations.",
+        "country": "USA",
+        "id": 5
+    },
+    {
+        "name": "Coco",
+        "language": "English",
+        "genre": [
+            "Animation",
+            "Adventure",
+            "Family"
+        ],
+        "featured": false,
+        "cast": [
+            "Anthony Gonzalez",
+            "Gael Garc\u00eda Bernal",
+            "Benjamin Bratt"
+        ],
+        "imageUrl": "https://example.com/images/coco.jpg",
+        "imdb": 8.4,
+        "runtime": 105,
+        "description": "Despite his family's generations-old ban on music, young Miguel dreams of becoming a musician and embarks on a journey to the Land of the Dead.",
+        "country": "USA",
+        "id": 6
+    },
+    {
+        "name": "3 Idiots",
+        "language": "Hindi",
+        "genre": [
+            "Comedy",
+            "Drama"
+        ],
+        "featured": true,
+        "cast": [
+            "Aamir Khan",
+            "R. Madhavan",
+            "Sharman Joshi"
+        ],
+        "imageUrl": "https://m.media-amazon.com/images/I/61NSZeiNF3L._AC_UF894,1000_QL80_.jpg",
+        "imdb": 8.4,
+        "runtime": 170,
+        "description": "Two friends embark on a journey to find their long-lost companion who inspired them to think differently in the competitive world of education.",
+        "country": "India",
+        "id": 7
+    },
+    {
+        "name": "The Godfather",
+        "language": "English",
+        "genre": [
+            "Crime",
+            "Drama"
+        ],
+        "featured": true,
+        "cast": [
+            "Marlon Brando",
+            "Al Pacino",
+            "James Caan"
+        ],
+        "imageUrl": "https://m.media-amazon.com/images/I/61k7Mx2IjzL.jpg",
+        "imdb": 9.2,
+        "runtime": 175,
+        "description": "The patriarch of an organized crime dynasty in New York City transfers control of his empire to his reluctant son.",
+        "country": "USA",
+        "id": 8
+    },
+    {
+        "name": "Your Name",
+        "language": "Japanese",
+        "genre": [
+            "Animation",
+            "Drama",
+            "Fantasy"
+        ],
+        "featured": false,
+        "cast": [
+            "Ryunosuke Kamiki",
+            "Mone Kamishiraishi"
+        ],
+        "imageUrl": "https://rukminim2.flixcart.com/image/850/1000/xif0q/book/1/f/p/your-name-the-official-visual-guide-original-imahy5knsetkjzxe.jpeg?q=90&crop=false",
+        "imdb": 8.4,
+        "runtime": 106,
+        "description": "Two teenagers mysteriously swap bodies and must find a way to meet and change their destinies before disaster strikes.",
+        "country": "Japan",
+        "id": 9
+    },
+    {
+        "name": "Gladiator",
+        "language": "English",
+        "genre": [
+            "Action",
+            "Adventure",
+            "Drama"
+        ],
+        "featured": true,
+        "cast": [
+            "Russell Crowe",
+            "Joaquin Phoenix",
+            "Connie Nielsen"
+        ],
+        "imageUrl": "https://rukminim2.flixcart.com/image/850/1000/kyvvtzk0/poster/d/x/8/medium-gladiator-matte-finish-poster-urbanprint6311-original-imagbygdgnhbdj8z.jpeg?q=90&crop=false",
+        "imdb": 8.5,
+        "runtime": 155,
+        "description": "A betrayed Roman general fights for his freedom and honor in the gladiatorial arena while seeking vengeance against the corrupt emperor.",
+        "country": "USA",
+        "id": 10
+    },
+    {
+        "name": "Interstellar",
+        "language": "English",
+        "genre": ["Sci-Fi", "Adventure", "Drama"],
+        "featured": true,
+        "cast": ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"],
+        "imageUrl": "https://example.com/images/interstellar.jpg",
+        "imdb": 8.6,
+        "runtime": 169,
+        "description": "A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival.",
+        "country": "USA",
+        "id": 11
+    },
+    {
+        "name": "The Grand Budapest Hotel",
+        "language": "English",
+        "genre": ["Comedy", "Adventure", "Drama"],
+        "featured": false,
+        "cast": ["Ralph Fiennes", "Tony Revolori", "Saoirse Ronan"],
+        "imageUrl": "https://example.com/images/grand-budapest.jpg",
+        "imdb": 8.1,
+        "runtime": 99,
+        "description": "A concierge at a famous European hotel becomes embroiled in a murder mystery after inheriting a priceless painting.",
+        "country": "USA",
+        "id": 12
+    },
+    {
+        "name": "Pulp Fiction",
+        "language": "English",
+        "genre": ["Crime", "Drama"],
+        "featured": true,
+        "cast": ["John Travolta", "Uma Thurman", "Samuel L. Jackson"],
+        "imageUrl": "https://example.com/images/pulp-fiction.jpg",
+        "imdb": 8.9,
+        "runtime": 154,
+        "description": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in a series of incidents.",
+        "country": "USA",
+        "id": 13
+    },
+    {
+        "name": "Amélie",
+        "language": "French",
+        "genre": ["Comedy", "Romance"],
+        "featured": false,
+        "cast": ["Audrey Tautou", "Mathieu Kassovitz", "Rufus"],
+        "imageUrl": "https://example.com/images/amelie.jpg",
+        "imdb": 8.3,
+        "runtime": 122,
+        "description": "Amélie, an innocent and naive girl in Paris, sets out on a quest to spread happiness to those around her.",
+        "country": "France",
+        "id": 14
+    },
+    {
+        "name": "Schindler's List",
+        "language": "English",
+        "genre": ["Biography", "Drama", "History"],
+        "featured": true,
+        "cast": ["Liam Neeson", "Ralph Fiennes", "Ben Kingsley"],
+        "imageUrl": "https://example.com/images/schindlers-list.jpg",
+        "imdb": 9.0,
+        "runtime": 195,
+        "description": "In German-occupied Poland during World War II, a businessman saves the lives of over a thousand Jewish refugees.",
+        "country": "USA",
+        "id": 15
+    },
+    {
+        "name": "The Lion King",
+        "language": "English",
+        "genre": ["Animation", "Adventure", "Drama"],
+        "featured": false,
+        "cast": ["Matthew Broderick", "James Earl Jones", "Jeremy Irons"],
+        "imageUrl": "https://example.com/images/lion-king.jpg",
+        "imdb": 8.5,
+        "runtime": 88,
+        "description": "A lion cub prince flees his kingdom only to learn the true meaning of responsibility and bravery.",
+        "country": "USA",
+        "id": 16
+    },
+    {
+        "name": "The Prestige",
+        "language": "English",
+        "genre": ["Drama", "Mystery", "Sci-Fi"],
+        "featured": true,
+        "cast": ["Christian Bale", "Hugh Jackman", "Scarlett Johansson"],
+        "imageUrl": "https://example.com/images/prestige.jpg",
+        "imdb": 8.5,
+        "runtime": 130,
+        "description": "Two magicians engage in a bitter rivalry to create the ultimate stage illusion.",
+        "country": "USA",
+        "id": 17
+    },
+    {
+        "name": "A Separation",
+        "language": "Persian",
+        "genre": ["Drama"],
+        "featured": false,
+        "cast": ["Leila Hatami", "Peyman Maadi", "Sareh Bayat"],
+        "imageUrl": "https://example.com/images/separation.jpg",
+        "imdb": 8.3,
+        "runtime": 123,
+        "description": "A married couple faces a complex decision when one desires to leave Iran and the other wants to stay and care for a parent.",
+        "country": "Iran",
+        "id": 18
+    },
+    {
+        "name": "Whiplash",
+        "language": "English",
+        "genre": ["Drama", "Music"],
+        "featured": true,
+        "cast": ["Miles Teller", "J.K. Simmons", "Paul Reiser"],
+        "imageUrl": "https://example.com/images/whiplash.jpg",
+        "imdb": 8.5,
+        "runtime": 106,
+        "description": "A young drummer's pursuit of perfection in the world of jazz music leads to a tense relationship with his mentor.",
+        "country": "USA",
+        "id": 19
+    },
+    {
+        "name": "Pan's Labyrinth",
+        "language": "Spanish",
+        "genre": ["Drama", "Fantasy", "War"],
+        "featured": false,
+        "cast": ["Ivana Baquero", "Sergi López", "Maribel Verdú"],
+        "imageUrl": "https://example.com/images/pans-labyrinth.jpg",
+        "imdb": 8.2,
+        "runtime": 118,
+        "description": "A young girl in post-Civil War Spain discovers a magical labyrinth and faces dark forces while seeking refuge from her cruel stepfather.",
+        "country": "Spain",
+        "id": 20
+    },
+    {
+        "name": "City of God",
+        "language": "Portuguese",
+        "genre": ["Crime", "Drama"],
+        "featured": true,
+        "cast": ["Alexandre Rodrigues", "Leandro Firmino", "Phellipe Haagensen"],
+        "imageUrl": "https://example.com/images/city-of-god.jpg",
+        "imdb": 8.6,
+        "runtime": 130,
+        "description": "In the slums of Rio de Janeiro, two boys take different paths as one becomes a photographer and the other a drug dealer.",
+        "country": "Brazil",
+        "id": 21
+    },
+    {
+        "name": "Oldboy",
+        "language": "Korean",
+        "genre": ["Action", "Drama", "Mystery"],
+        "featured": true,
+        "cast": ["Choi Min-sik", "Yoo Ji-tae", "Kang Hye-jung"],
+        "imageUrl": "https://example.com/images/oldboy.jpg",
+        "imdb": 8.4,
+        "runtime": 120,
+        "description": "A man is imprisoned for 15 years without explanation and is suddenly released, seeking vengeance and uncovering a dark mystery.",
+        "country": "South Korea",
+        "id": 22
+    },
+    {
+        "name": "The Intouchables",
+        "language": "French",
+        "genre": ["Biography", "Comedy", "Drama"],
+        "featured": false,
+        "cast": ["François Cluzet", "Omar Sy", "Anne Le Ny"],
+        "imageUrl": "https://example.com/images/intouchables.jpg",
+        "imdb": 8.5,
+        "runtime": 112,
+        "description": "An aristocrat becomes a quadriplegic from a paragliding accident and hires a young man from the projects to be his caregiver.",
+        "country": "France",
+        "id": 23
+    },
+    {
+        "name": "The Lives of Others",
+        "language": "German",
+        "genre": ["Drama", "Thriller"],
+        "featured": true,
+        "cast": ["Ulrich Mühe", "Martina Gedeck", "Sebastian Koch"],
+        "imageUrl": "https://example.com/images/lives-of-others.jpg",
+        "imdb": 8.4,
+        "runtime": 137,
+        "description": "An East German officer becomes emotionally involved while spying on a writer and his lover in the 1980s.",
+        "country": "Germany",
+        "id": 24
+    },
+    {
+        "name": "Life is Beautiful",
+        "language": "Italian",
+        "genre": ["Comedy", "Drama", "Romance"],
+        "featured": false,
+        "cast": ["Roberto Benigni", "Nicoletta Braschi", "Giorgio Cantarini"],
+        "imageUrl": "https://example.com/images/life-is-beautiful.jpg",
+        "imdb": 8.6,
+        "runtime": 116,
+        "description": "A father uses his wit and humor to shield his son from the horrors of a Nazi concentration camp during World War II.",
+        "country": "Italy",
+        "id": 25
+    },
+    {
+        "name": "Rashomon",
+        "language": "Japanese",
+        "genre": ["Crime", "Drama", "Mystery"],
+        "featured": true,
+        "cast": ["Toshiro Mifune", "Machiko Kyo", "Masayuki Mori"],
+        "imageUrl": "https://example.com/images/rashomon.jpg",
+        "imdb": 8.2,
+        "runtime": 88,
+        "description": "A murder and rape are recounted from multiple perspectives, revealing the complexities of truth and human nature.",
+        "country": "Japan",
+        "id": 26
+    },
+    {
+        "name": "The Hunt",
+        "language": "Danish",
+        "genre": ["Drama", "Thriller"],
+        "featured": false,
+        "cast": ["Mads Mikkelsen", "Thomas Bo Larsen", "Annika Wedderkopp"],
+        "imageUrl": "https://example.com/images/hunt.jpg",
+        "imdb": 8.3,
+        "runtime": 115,
+        "description": "A kindergarten teacher's life unravels when a simple lie spirals out of control, causing his community to turn against him.",
+        "country": "Denmark",
+        "id": 27
+    },
+    {
+        "name": "Slumdog Millionaire",
+        "language": "English",
+        "genre": ["Drama", "Romance"],
+        "featured": true,
+        "cast": ["Dev Patel", "Freida Pinto", "Anil Kapoor"],
+        "imageUrl": "https://example.com/images/slumdog-millionaire.jpg",
+        "imdb": 8.0,
+        "runtime": 120,
+        "description": "A teenager from the slums of Mumbai becomes a contestant on a game show, reliving his harsh life experiences with each question.",
+        "country": "India",
+        "id": 28
+    },
+    {
+        "name": "Portrait of a Lady on Fire",
+        "language": "French",
+        "genre": ["Drama", "Romance"],
+        "featured": false,
+        "cast": ["Noémie Merlant", "Adèle Haenel", "Valeria Golino"],
+        "imageUrl": "https://example.com/images/portrait-lady-fire.jpg",
+        "imdb": 8.1,
+        "runtime": 120,
+        "description": "On an isolated island in 18th-century France, an artist falls in love with the woman she is commissioned to paint.",
+        "country": "France",
+        "id": 29
+    },
+    {
+        "name": "The Handmaiden",
+        "language": "Korean",
+        "genre": ["Drama", "Mystery", "Romance"],
+        "featured": true,
+        "cast": ["Kim Min-hee", "Kim Tae-ri", "Ha Jung-woo"],
+        "imageUrl": "https://example.com/images/handmaiden.jpg",
+        "imdb": 8.1,
+        "runtime": 145,
+        "description": "A Korean con man hires a handmaiden to help him seduce a Japanese heiress, but things take unexpected turns.",
+        "country": "South Korea",
+        "id": 30
+    }
+]

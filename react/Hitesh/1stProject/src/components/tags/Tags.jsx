@@ -6,7 +6,8 @@ const Tags = () => {
         [
             "Action", "Adventure", "Animation", "Biography", "Comedy", "Crime",
             "Documentary", "Drama", "Fantasy", "Family", "History", "Horror", "Reboot", "Miniseries", "Limited Series",
-            "Binge-worthy"
+            "Binge-worthy",
+            "Imagination"
         ]
     )
     return (
@@ -15,8 +16,8 @@ const Tags = () => {
 
             <div className={styles.tags}>
                 {
-                    tags.map((tag) => {
-                        return <p className={styles.tag}>{tag}</p>
+                    tags.map((tag,index) => {
+                        return <  p  key = {index} className={styles.tag}>{tag}</p>
                     })
                 }
 

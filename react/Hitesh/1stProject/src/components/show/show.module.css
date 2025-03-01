@@ -2,9 +2,30 @@
     width: 17%;
     height: 350px;
     /* background-color: yellow; */
+    position: relative;
+    display: flex;
 }
 
 .show>img {
     height: 100%;
+    position: absolute;
 
+}
+
+.movieName{
+    width: 100%;
+    height: 100px;
+    background-color: rgb(6, 7, 7,.5);
+    position: absolute;
+    align-self: flex-end;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
+    transition: .3s;
+    /* align-items: center; */
+}
+
+.movieName:hover{
+height: 200px;
 }

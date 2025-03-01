@@ -100,3 +100,15 @@ color: #fff;
 .userIcon{
     height: 40px;
 }
+
+.serachResults{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(232, 232, 232,.8);
+    position: fixed;
+    z-index: 99;
+    display: flex;
+    column-gap: 10px;
+    flex-wrap: wrap;
+    padding: 2%;
+}

@@ -3,12 +3,12 @@
     /* height: 75px; */
     background-color: #060707;
     display: flex;
-    column-gap: 12px;
+    column-gap: 10px;
     padding: 0px 2px;
 }
 
 .tag{
-    padding: 5px 15px;
+    padding: 8px 12px;
     background-color: #363636;
     width: fit-content;
     border-radius: 15px;
