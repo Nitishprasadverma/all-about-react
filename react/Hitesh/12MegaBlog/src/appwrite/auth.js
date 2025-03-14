@@ -22,11 +22,13 @@ export class AuthService {
 
             if (userAccount) {
                 // call another method
-                this.login({ email, password })
+                return this.login({ email, password })
+                //  return userAccount;
 
             } else {
                 return userAccount;
             }
+
         } catch (error) {
             throw error
         }
@@ -35,7 +37,10 @@ export class AuthService {
     // Login Method
     async login({ email, password }) {
         try {
-            return await this.account.createEmailPasswordSession(email, password)
+             await this.account.createEmailPasswordSession(email, password, true)
+
+            await new Promise((resolve) => setTimeout(resolve,500))
+            return await this.getCurrentUser();
         } catch (error) {
             throw error
         }
@@ -45,11 +50,27 @@ export class AuthService {
     async getCurrentUser() {
 
         try {
+            const session = await this.account.getSession("current");
+            if (!session) {
+                console.log("❌ No active session! Please log in.");
+                return null;
+            }
+    
+            console.log("✅ Active session found! Fetching user...");
             return await this.account.get();
         } catch (error) {
-            console.log("Appwrite service:", error)
+            console.error("❌ getCurrentUser ERROR:", error.message);
+            return null;
         }
-        return null;
+
+    //      try {
+    //     const user = await this.account.get(); // Fetch user details
+    //     console.log("User fetched:", user); // Debugging output
+    //     return user;
+    // } catch (error) {
+    //     console.error("Error fetching user:", error);
+    //     return null;
+    // }
     }
 
     //Logout method
@@ -57,7 +78,7 @@ export class AuthService {
         try {
             await this.account.deleteSessions();
         } catch (error) {
-            console.log("Appwrite service:", error)
+            console.log("Appwrite service:: logout::error", error)
         }
     }
 }

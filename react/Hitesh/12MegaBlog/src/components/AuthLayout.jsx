@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useLoaderData, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-export default function Protected({ Children, authentication = true }) {
+export default function Protected({ children, authentication = true }) {
 
     const navigate = useNavigate()
-    cont[loader, setLoader] = useState(true)
+    const[loader, setLoader] = useState(true)
     const authStatus = useSelector(state => state.auth.status)
-
+console.log("AuthStatus is :", authStatus)
     useEffect(() => {
 
         // Todo :- make it more easy to understand
@@ -18,7 +18,7 @@ export default function Protected({ Children, authentication = true }) {
         // setLoader(false)
         // let authvalue = authStatus === true ? true : false;
 
-        if (authentication && authStatus !== authentication) {
+        if (authentication && authStatus ) {
             navigate("/login")
         } else if (!authentication && authStatus !== authentication) {
             navigate("/")
@@ -27,11 +27,19 @@ export default function Protected({ Children, authentication = true }) {
         setLoader(false)
     }, [authStatus, navigate, authentication])
 
-    return (
-        <div>
+    // useEffect(() => {
+    //     const timeout = setTimeout(() => {
+    //         if (authentication === true && authStatus === false) {
+    //             navigate("/login");
+    //         } else if (authentication === false && authStatus === true) {
+    //             navigate("/");
+    //         }
+    //     }, 500); // Small delay for Redux update
+    
+    //     return () => clearTimeout(timeout);
+    // }, [authStatus, navigate, authentication]);
 
-        </div>
-    )
+    return  loader ? <h1>Loading...</h1> :<>{children}</>
 }
 
 
