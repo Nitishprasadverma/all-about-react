@@ -18,11 +18,13 @@ console.log("AuthStatus is :", authStatus)
         // setLoader(false)
         // let authvalue = authStatus === true ? true : false;
 
-        if (authentication && authStatus ) {
-            navigate("/login")
-        } else if (!authentication && authStatus !== authentication) {
-            navigate("/")
-        }
+        if (authentication && !authStatus) {
+            // Protected route and user is not authenticated
+            navigate("/login");
+          } else if (!authentication && authStatus) {
+            // Non-protected route and user is authenticated
+            navigate("/");
+          }
 
         setLoader(false)
     }, [authStatus, navigate, authentication])
