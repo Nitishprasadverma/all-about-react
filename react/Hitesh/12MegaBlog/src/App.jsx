@@ -18,7 +18,7 @@ function App() {
       .then((userData) => {
         console.log("Fetched user Data: ", userData)
         if (userData) {
-          dispatch(login(userData))
+          dispatch( userData ?login(userData) : logout())
         } else {
           dispatch(logout())
         }

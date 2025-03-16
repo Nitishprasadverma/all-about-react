@@ -1,5 +1,6 @@
 import conf from "../conf/conf.js"
 
+
 import { Client, ID, Databases, Storage, Query } from "appwrite"
 
 
@@ -20,7 +21,7 @@ export class Service {
     async createPost({ title, slug, content, featuredImage, userId, status }) {
         try {
             return await this.databases.createDocument(
-                conf.appwriteDatabaseId, conf.appwriteCollectionId, slug,
+                conf.appwriteDatabaseId, conf.appwriteCollectionId,  ID.unique(),
                 {
                     title,
                     content,

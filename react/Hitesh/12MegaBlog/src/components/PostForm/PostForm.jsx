@@ -21,7 +21,8 @@ import { useSelector } from 'react-redux'
 
     const navigate = useNavigate();
     const userData = useSelector(state => state.auth.userData);
-
+    console.log("USer id inside PostForm: ", userData.$id)
+    console.log("userData inside postForm:", userData)
     const submit = async (data) => {
         if (post) {
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
@@ -68,7 +69,7 @@ import { useSelector } from 'react-redux'
 
         const subscription = watch((value, {name}) =>{
             if(name === "title"){
-                setValue('slug', slugTransform(value.title),{shouldValidate:true})
+                setValue("slug", slugTransform(value.title),{shouldValidate:true})
             }
            
         })
