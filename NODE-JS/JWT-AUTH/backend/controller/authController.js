@@ -2,8 +2,8 @@ const userModel = require("../model/userSchema");
 const emailValidator = require("email-validator");
 
 const signup = async (req, res, next) => {
+
     const { name, email, password, confirmPassword } = req.body;
-    console.log(name, email, password, confirmPassword)
 
     //Checking is all field is there or not
     if (!name || !email || !password || !confirmPassword) {
@@ -101,24 +101,9 @@ const signin = async (req, res) => {
 
 }
 
-const getUser = async (req, res) =>{
-const userId = req.user.id;
 
-try {
-    const user = await userModel.findById(userId);
-    return res.status(200).json({
-        sucess:true,
-        data:user
-    })
-} catch (error) {
-    res.status(400).json({
-        sucess:false,
-        message:error.message
-    })
-}
-}
 module.exports = {
     signup,
     signin,
-    getUser
+    
 }
