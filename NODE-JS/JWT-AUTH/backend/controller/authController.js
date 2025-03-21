@@ -1,3 +1,4 @@
+
 const userModel = require("../model/userSchema");
 const emailValidator = require("email-validator");
 
@@ -100,10 +101,26 @@ const signin = async (req, res) => {
     }
 
 }
-
+const getUser = async (req, res) =>{
+    const userId = req.user.id;
+    
+    try {
+        const user = await userModel.findById(userId);
+        console.log("user in getuser", user)
+        return res.status(200).json({
+            sucess:true,
+            data:user
+        })
+    } catch (error) {
+        res.status(400).json({
+            success:false,
+            message:error.message
+        })
+    }
+    }
 
 module.exports = {
     signup,
     signin,
-    
+    getUser
 }

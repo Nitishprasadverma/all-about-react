@@ -3,9 +3,12 @@ const express = require("express");
 const app = express();
 const authRouter = require("./router/authRoute");
 const databaseconnect = require("./config/databaseConfig");
+const cookieParser = require('cookie-parser')
+
 
 databaseconnect();
 app.use(express.json());
+app.use(cookieParser());
 app.use((req, res, next) => {
     console.log(`Incoming Request: ${req.method} ${req.url}`);
     next();
