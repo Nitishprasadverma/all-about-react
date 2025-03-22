@@ -1,6 +1,6 @@
 
 const emailValidator = require('email-validator');
-const signupDataValidate = (req, res, next) => {
+const signupValidator = (req, res, next) => {
     const { username, name, bio, email, password } = req.body;
     if (!name || !username || !bio || !email || !password) {
         return res.status(400).json({ success: false, message: "All fields are required!" });
@@ -15,4 +15,21 @@ const signupDataValidate = (req, res, next) => {
     next();
 };
 
-module.exports = signupDataValidate
+const loginValidator = (req, res, next) => {
+    const { identifier, password } = req.body; // identifier can be email or username
+
+    if (!identifier || !password) {
+        return res.status(400).json({
+            success: false,
+            message: "Username or email and password are required!"
+        });
+    }
+
+
+    next();
+};
+
+module.exports = {
+    signupValidator,
+    loginValidator
+}

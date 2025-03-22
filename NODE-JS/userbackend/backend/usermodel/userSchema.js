@@ -42,12 +42,20 @@ const userSchema = new Schema({
     }
 
 })
-
+userSchema.pre('save', async function(next){
+    if(!this.isModified('password')){
+     return next();
+    }
+    this.password = await bcrypt.hash(this.password, 10);
+    return next();
+ })
 userSchema.methods = {
     jwtToken(){
-        return JWT.sign({id:this._id,email:this.email}),
-        process.env.SECRET,
-        {expireSIn:'12h'}
+        return JWT.sign(
+            { id: this._id, email: this.email },  // Payload
+            process.env.SECRET,                  // Secret key
+            { expiresIn: '12h' }                 // Options (correct spelling)
+        );
     }
 }
 

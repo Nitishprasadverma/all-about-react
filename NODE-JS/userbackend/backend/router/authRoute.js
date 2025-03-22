@@ -1,6 +1,8 @@
 const express = require('express');
-const { singup } = require('../controllers/authControllers');
-const signupvalidator = require('../middleware/validatore.js')
+const { signup,login } = require('../controllers/authControllers');
+
+const { signupValidator, loginValidator } = require('../middleware/validatore'); // Fix import
+
 // const { router } = require('../app');
 
 
@@ -8,6 +10,6 @@ const signupvalidator = require('../middleware/validatore.js')
 
 const authRouter = express.Router();
 
-authRouter.post('/signup', signupvalidator,singup);
-
+authRouter.post('/signup' ,signupValidator,signup);
+authRouter.post('/login',login)
 module.exports = authRouter;
