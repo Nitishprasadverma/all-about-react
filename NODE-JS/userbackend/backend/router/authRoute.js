@@ -3,7 +3,7 @@ const { signup,login } = require('../controllers/authControllers');
 
 const { signupValidator, loginValidator } = require('../middleware/validatore'); // Fix import
 
-// const { router } = require('../app');
+
 
 
 
@@ -11,5 +11,5 @@ const { signupValidator, loginValidator } = require('../middleware/validatore');
 const authRouter = express.Router();
 
 authRouter.post('/signup' ,signupValidator,signup);
-authRouter.post('/login',login)
+authRouter.post('/login',loginValidator ,login)
 module.exports = authRouter;
