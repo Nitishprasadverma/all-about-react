@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+        .profile-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .logout-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <img id="user-avatar" class="profile-pic" alt="User Avatar">
+        <h2 id="username">@username</h2>
+        <p id="user-bio">Bio: No bio available</p>
+        <p id="user-email">Email: </p>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const user = JSON.parse(localStorage.getItem("user"));
+
+            if (!user) {
+                window.location.href = "index.html"; // Redirect to login if not logged in
+            } else {
+                document.getElementById("username").innerText = `@${user.username}`;
+                document.getElementById("user-bio").innerText = `Bio: ${user.bio || "No bio available"}`;
+                document.getElementById("user-email").innerText = `Email: ${user.email}`;
+                document.getElementById("user-avatar").src = `https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70)}`;
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            window.location.href = "index.html"; // Redirect to login
+        }
+    </script>
+</body>
+</html>

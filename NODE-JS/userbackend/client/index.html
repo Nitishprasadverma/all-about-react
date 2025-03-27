@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Auth</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            background: #3897f0;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background: #2680d1;
+        }
+
+        .links {
+            margin-top: 10px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #3897f0;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="login-form">
+            <h2>Instagram Login</h2>
+            <input type="text" id="login-username" placeholder="Enter Username or Email">
+            <input type="password" id="login-password" placeholder="Password">
+            <button class="btn" onclick="login()">Log In</button>
+            <p id="login-error" style="color: red;"></p> <!-- Error Message -->
+
+            <div class="links">
+                <a href="#">Forgot Password?</a>
+                <a onclick="toggleForm()">Sign Up</a>
+            </div>
+        </div>
+
+        <div id="signup-form" class="hidden">
+            <h2>Instagram SignUp</h2>
+            <!-- Signup Form -->
+            <input type="text" id="name" placeholder="Enter your Name">
+            <input type="text" id="username" placeholder="@Username">
+            <input type="email" id="email" placeholder="Enter your Email">
+            <input type="password" id="password" placeholder="Password">
+            <input type="text" id="bio" placeholder="Enter your Bio">
+            <button class="btn" onclick="signup()">Sign Up</button>
+
+            <div class="links">
+                <a href="#">Forgot Password?</a>
+                <a onclick="toggleForm()">Log In</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       
+// Function to toggle between Login and Signup forms
+function toggleForm() {
+    document.getElementById('login-form').classList.toggle('hidden'); // Hide/Show Login Form
+    document.getElementById('signup-form').classList.toggle('hidden'); // Hide/Show Signup Form
+}
+
+// Function to handle user login
+async function login() {
+    const usernameOrEmail = document.getElementById("login-username").value; // Get username or email input
+    const password = document.getElementById("login-password").value; // Get password input
+    const errorElement = document.getElementById("login-error"); // Get error message container
+
+    errorElement.innerText = ""; // Clear previous errors
+
+    try {
+        // Send login request to the backend API
+        const response = await fetch("http://localhost:50001/api/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: usernameOrEmail, username: usernameOrEmail, password }) // Send both email and username
+        });
+
+        const data = await response.json(); // Parse response as JSON
+
+        if (data.success) {
+            // Store user token and details in localStorage
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.data));
+
+            alert("Login successful! Redirecting to home..."); // Show success message
+            window.location.href = "home.html"; // ✅ Redirect to home page
+        } else {
+            errorElement.innerText = data.message; // ✅ Show error message
+        }
+    } catch (error) {
+        console.error("Login error:", error);
+        errorElement.innerText = "Server error. Please try again."; // Handle server error
+    }
+}
+
+// Function to handle user signup
+function signup() {
+    // Get input values from signup form fields
+    const name = document.getElementById("name")?.value.trim();
+    const username = document.getElementById("username")?.value.trim();
+    const email = document.getElementById("email")?.value.trim();
+    const password = document.getElementById("password")?.value.trim();
+    const bio = document.getElementById("bio")?.value.trim();
+
+    // Validate if any field is empty
+    if (!name || !username || !email || !password || !bio) {
+        alert("Please fill all fields!"); // Show error if any field is missing
+        return;
+    }
+
+    // Send signup request to the backend API
+    fetch("http://localhost:50001/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, username, email, password, bio }) // Send user details in request body
+    })
+    .then(response => response.json()) // Convert response to JSON
+    .then(data => {
+        if (data.success) {
+            alert("Signup successful! Please log in."); // Show success message
+            toggleForm(); // Switch to login form after successful signup
+        } else {
+            alert("Signup failed: " + data.message); // Show error message if signup fails
+        }
+    })
+    .catch(error => console.error("Error:", error)); // Handle network or server errors
+}
+
+    </script>
+</body>
+
+</html>
