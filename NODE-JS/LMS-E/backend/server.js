@@ -1,12 +1,22 @@
 import { config } from 'dotenv';
-import app from './app.js'; // Add ".js" when importing local modules in ES modules
-import connectionToDB from './config/dbConnection.js';
+import app from './app.js'; // Importing the Express app instance
+import connectionToDB from './config/dbConnection.js'; // Importing database connection function
+import { v2 as cloudinary } from 'cloudinary'; // Importing Cloudinary for file uploads
 
+// Load environment variables from .env file
 config();
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000; // Set default port to 5000 if not specified in .env
 
+// Configure Cloudinary with credentials from environment variables
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+// Start the Express server and establish a database connection
 app.listen(PORT, async () => {
-    await connectionToDB();
-    console.log(`App is running at http://localhost:${PORT}`);
+    await connectionToDB(); // Connecting to the database
+    console.log(`App is running at http://localhost:${PORT}`); // Debugging log (commented out)
 });
