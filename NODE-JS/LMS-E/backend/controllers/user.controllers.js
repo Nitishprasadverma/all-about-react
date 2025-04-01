@@ -4,7 +4,7 @@ import AppError from "../utils/error.util.js";
 import { v2 as cloudinary } from "cloudinary";
 import fs from "fs/promises";
 import sendEmail from "../utils/sendEmail.js";
-
+import crypto from 'crypto'
 
 // Cookie options for authentication
 const cookieOptions = {
@@ -97,9 +97,10 @@ const login = async (req, res, next) => {
         const user = await User.findOne({ email }).select('+password');
 
         // Check if user exists and password is correct
-        if (!user || !user.comparePassword(password)) {
+        if (!user || !(await user.comparePassword(password))) {
             return next(new AppError('Email or password does not match!', 400));
         }
+        
 
         // Generate JWT token and set cookie
         const token = await user.generateJWTToken();
@@ -184,8 +185,31 @@ const forgotPassword = async (req, res,next) => {
     }
 }
 
-const resetPassword = (req, res, next) => {
+const resetPassword = async(req, res, next) => {
+const {resetToken} = req.params;
 
+const {password} = req.body;
+
+const forgotPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+
+const user = await User.findOne({
+    forgotPasswordToken,
+    forgotPasswordExpiry:{$gt: Date.now()}
+})
+
+if(!user){
+    return next(new AppError('Token is invalid or expired, please try again', 400));
+}
+
+user.password = password;
+user.forgotPasswordToken = undefined;
+user.forgotPasswordExpiry = undefined;
+user.save();
+
+res.status(200).json({
+    success:true,
+    message:'Password changed successfully'
+})
 }
 // Export functions
 export {

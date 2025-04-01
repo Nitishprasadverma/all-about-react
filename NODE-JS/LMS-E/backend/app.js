@@ -12,7 +12,7 @@ config();
 const app = express(); // Creating an Express application instance
 
 app.use(express.json()); // Middleware to parse incoming JSON requests
-
+app.use(express.urlencoded({extended:true}))
 // Configure CORS to allow frontend requests
 app.use(
     cors({

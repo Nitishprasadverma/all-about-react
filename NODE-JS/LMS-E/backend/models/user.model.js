@@ -72,7 +72,10 @@ userSchema.methods = {
     },
     // Compare plain text password with the hashed password
     comparePassword: async function (plainTextPassword) {
-        return await bcrypt.compare(plainTextPassword, this.password);
+        console.log("Comparing:", plainTextPassword, "with stored:", this.password);
+        const isMatch = await bcrypt.compare(plainTextPassword, this.password);
+        console.log("PAssword Match:", isMatch);
+        return isMatch;
     },
     generatePasswordResetToken: async function () {
         const resetToken = crypto.randomBytes(20).toString('hex');

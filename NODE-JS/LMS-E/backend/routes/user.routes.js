@@ -11,6 +11,6 @@ router.post('/login', login);
 router.get('/me', isLoggedIn, getProfile);
 router.get('/logout', logout);
 router.post('/forgotPassword',forgotPassword);
-router.post('/reset-password',resetPassword);
+router.post('/resetPassword/:resetToken',resetPassword);
 // Export the router to be used in other parts of the application
 export default router;
