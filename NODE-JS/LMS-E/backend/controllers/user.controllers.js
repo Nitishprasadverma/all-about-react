@@ -2,7 +2,9 @@ import User from "../models/user.model.js";
 import AppError from "../utils/error.util.js";
 // import cloudinary from 'cloudinary'
 import { v2 as cloudinary } from "cloudinary";
-import fs from "fs/promises"; 
+import fs from "fs/promises";
+import sendEmail from "../utils/sendEmail.js";
+
 
 // Cookie options for authentication
 const cookieOptions = {
@@ -19,7 +21,7 @@ const register = async (req, res, next) => {
     if (!fullName || !email || !password) {
         return next(new AppError('All fields are required', 400));
     }
-    
+
     // Check if user already exists
     const userExists = await User.findOne({ email });
     if (userExists) {
@@ -143,10 +145,54 @@ const getProfile = async (req, res, next) => {
     }
 }
 
+const forgotPassword = async (req, res,next) => {
+    const { email } = req.body;
+
+    if (!email) {
+        return next(new AppError('Email is required', 400));
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+        return next(new AppError('Email does not exist', 400))
+    }
+
+    const resetToken = await user.generatePasswordResetToken();
+    
+    await user.save();
+
+    const resetPasswordUrl = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
+
+    console.log(resetPasswordUrl);
+    const subject = 'resetPassword';
+    const message = `You can reset your password by clicking <a href=${resetPasswordUrl} target="_blank">Reset your password</a>\nIf the above link does not work for some reason then copy paste this link in new tab ${resetPasswordUrl}.\n If you have not requested this, kindly ignore.`
+
+    try {
+        await sendEmail(email,subject,message);
+
+        res.status(200).json({
+            success:true,
+            message :`Reset password token has been sent to ${email} successfully`
+
+        })
+    } catch (error) {
+        user.forgotPasswordExpiry = undefined;
+        user.forgotPasswordToken = undefined;
+
+        await user.save();
+        return next(new AppError(error.message, 500));
+    }
+}
+
+const resetPassword = (req, res, next) => {
+
+}
 // Export functions
 export {
     register,
     login,
     logout,
-    getProfile
+    getProfile,
+    forgotPassword,
+    resetPassword
 };
