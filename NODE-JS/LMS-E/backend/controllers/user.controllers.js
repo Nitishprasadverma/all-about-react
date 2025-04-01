@@ -100,7 +100,7 @@ const login = async (req, res, next) => {
         if (!user || !(await user.comparePassword(password))) {
             return next(new AppError('Email or password does not match!', 400));
         }
-        
+
 
         // Generate JWT token and set cookie
         const token = await user.generateJWTToken();
@@ -146,7 +146,7 @@ const getProfile = async (req, res, next) => {
     }
 }
 
-const forgotPassword = async (req, res,next) => {
+const forgotPassword = async (req, res, next) => {
     const { email } = req.body;
 
     if (!email) {
@@ -159,7 +159,7 @@ const forgotPassword = async (req, res,next) => {
     }
 
     const resetToken = await user.generatePasswordResetToken();
-    
+
     await user.save();
 
     const resetPasswordUrl = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
@@ -169,11 +169,11 @@ const forgotPassword = async (req, res,next) => {
     const message = `You can reset your password by clicking <a href=${resetPasswordUrl} target="_blank">Reset your password</a>\nIf the above link does not work for some reason then copy paste this link in new tab ${resetPasswordUrl}.\n If you have not requested this, kindly ignore.`
 
     try {
-        await sendEmail(email,subject,message);
+        await sendEmail(email, subject, message);
 
         res.status(200).json({
-            success:true,
-            message :`Reset password token has been sent to ${email} successfully`
+            success: true,
+            message: `Reset password token has been sent to ${email} successfully`
 
         })
     } catch (error) {
@@ -185,31 +185,111 @@ const forgotPassword = async (req, res,next) => {
     }
 }
 
-const resetPassword = async(req, res, next) => {
-const {resetToken} = req.params;
+const resetPassword = async (req, res, next) => {
+    const { resetToken } = req.params;
 
-const {password} = req.body;
+    const { password } = req.body;
 
-const forgotPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+    const forgotPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
 
-const user = await User.findOne({
-    forgotPasswordToken,
-    forgotPasswordExpiry:{$gt: Date.now()}
-})
+    const user = await User.findOne({
+        forgotPasswordToken,
+        forgotPasswordExpiry: { $gt: Date.now() }
+    })
 
-if(!user){
-    return next(new AppError('Token is invalid or expired, please try again', 400));
+    if (!user) {
+        return next(new AppError('Token is invalid or expired, please try again', 400));
+    }
+
+    user.password = password;
+    user.forgotPasswordToken = undefined;
+    user.forgotPasswordExpiry = undefined;
+    user.save();
+
+    res.status(200).json({
+        success: true,
+        message: 'Password changed successfully'
+    })
 }
 
-user.password = password;
-user.forgotPasswordToken = undefined;
-user.forgotPasswordExpiry = undefined;
-user.save();
+const changePassword = async (req, res, next) => {
+    const { oldPassword, newPassword } = req.body;
 
-res.status(200).json({
-    success:true,
-    message:'Password changed successfully'
-})
+    const { id } = req.user;
+
+    if (!oldPassword || !newPassword) {
+        return next(new AppError('All field are madatory', 400));
+    }
+    const user = await User.findById(id).select('+password')
+
+    if (!user) {
+        return next(
+            new AppError('User does not exist', 400)
+        );
+    }
+
+    const isPassowordValid = await user.comparePassword(oldPassword);
+    if (!isPassowordValid) {
+        return next(
+            new AppError('Invalid Password', 400)
+        );
+    }
+    user.password = newPassword;
+    await user.save();
+    user.password = undefined;
+    res.status(200).json({
+        success: true,
+        message: "Password changed successfully"
+    })
+}
+
+const updateUser = async (req, res, next) => {
+    const { fullName } = req.body;
+    // console.log("full name:", fullName)
+    const id = req.params.id;
+    // console.log("User id in update",id)
+    const user = await User.findById(id);
+
+    if (!user) {
+        return next(
+            new AppError('User does not exists'), 400
+        )
+    }
+
+    if (fullName) {
+        user.fullName = fullName
+    }
+
+    if (req.file) {
+        await cloudinary.uploader.destroy(user.avatar.public_id)
+
+        try {
+            const result = await cloudinary.uploader.upload(req.file.path, {
+                folder: 'lms',
+                width: 250,
+                height: 250,
+                gravity: 'faces',
+                crop: 'fill'
+            });
+
+            if (result) {
+                user.avatar.public_id = result.public_id;
+                user.avatar.secure_url = result.secure_url;
+
+                // Remove the file from local storage
+                await fs.unlink(`uploads/${req.file.filename}`);
+            }
+        } catch (error) {
+            return next(new AppError(error.message || 'File not uploaded, please try again!', 500));
+        }
+    }
+
+    await user.save();
+    res.status(200).json({
+        success: true,
+        message: 'Profile updated successfully !',
+
+    })
 }
 // Export functions
 export {
@@ -218,5 +298,7 @@ export {
     logout,
     getProfile,
     forgotPassword,
-    resetPassword
+    resetPassword,
+    changePassword,
+    updateUser
 };
