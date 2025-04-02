@@ -3,7 +3,9 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { config } from 'dotenv';
 import morgan from 'morgan';
-import userRoutes from './routes/user.routes.js'; // Importing user-related routes
+import userRoutes from './routes/user.routes.js' // 
+// Importing user-related routes
+import courseRoutes from './routes/course.route.js'
 import errorMiddleware from './middleware/error.middleware.js'; // Importing error-handling middleware
 
 // Load environment variables from .env file
@@ -32,6 +34,7 @@ app.use('/ping', (req, res) => {
 // Register user-related routes
 app.use('/api/v1/user', userRoutes);
 
+app.use('/api/v1/courses', courseRoutes);
 // Handle undefined routes with a 404 error response
 app.use('*', (req, res) => {
     res.status(404).send('Oops! 404 page not found!');
