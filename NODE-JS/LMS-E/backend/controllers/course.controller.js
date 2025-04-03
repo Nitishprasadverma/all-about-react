@@ -97,9 +97,32 @@ const createCourse = async (req, res, next) => {
         )
     }
 }
-const updateCourse = (req, res, next) => {
+const updateCourse =async (req, res, next) => {
 try {
-    
+    const id = req.params.id;
+    console.log("course id:", id)
+    const course =await Course.findByIdAndUpdate(
+        id,
+        {
+            $set:req.body
+
+        },
+        {
+            new :true,
+            runValidators:true
+        }
+    );
+
+    if(!course){
+        return next(
+            new AppError('Course with given id does not exist',500)
+        )
+    }
+res.status(200).json({
+    success:true,
+    message: 'Course updated successfully',
+    course,
+})
 } catch (error) {
     return next(
         new AppError(error.message, 500)
@@ -107,7 +130,13 @@ try {
 }
 }
 const removeCourse = (req, res, next) => {
-
+try {
+    
+} catch (error) {
+    return next(
+        new AppError(error.message, 500)
+    )
+}
 }
 export {
     getAllCourses,
