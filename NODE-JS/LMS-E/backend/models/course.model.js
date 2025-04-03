@@ -1,7 +1,7 @@
 import { model, Schema } from 'mongoose'
 
 const courseSchema = new Schema({
-    titile: {
+    title: {
         type: String,
         required:[true, 'Title is required'],
         minLength:[8, 'Title must be atleast 8 characters'],
