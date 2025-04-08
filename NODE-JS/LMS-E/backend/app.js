@@ -5,6 +5,7 @@ import { config } from 'dotenv';
 import morgan from 'morgan';
 import userRoutes from './routes/user.routes.js' // 
 // Importing user-related routes
+import paymentRoutes from './routes/payment.routes.js'
 import courseRoutes from './routes/course.route.js'
 import errorMiddleware from './middleware/error.middleware.js'; // Importing error-handling middleware
 
@@ -35,6 +36,7 @@ app.use('/ping', (req, res) => {
 app.use('/api/v1/user', userRoutes);
 
 app.use('/api/v1/courses', courseRoutes);
+app.use('/api/v1/payments', paymentRoutes);
 // Handle undefined routes with a 404 error response
 app.use('*', (req, res) => {
     res.status(404).send('Oops! 404 page not found!');

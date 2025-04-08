@@ -3,6 +3,7 @@ import app from './app.js'; // Importing the Express app instance
 import connectionToDB from './config/dbConnection.js'; // Importing database connection function
 import { v2 as cloudinary } from 'cloudinary'; // Importing Cloudinary for file uploads
 
+import Razorpay from 'razorpay'
 // Load environment variables from .env file
 config();
 
@@ -14,6 +15,14 @@ cloudinary.config({
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
+
+
+export const razorpay = new Razorpay({
+    key_id : process.env.RAZORPAY_KEY_ID,
+
+key_secret: process.env.RAZORPAY_SECRET
+})
+
 
 // Start the Express server and establish a database connection
 app.listen(PORT, async () => {
