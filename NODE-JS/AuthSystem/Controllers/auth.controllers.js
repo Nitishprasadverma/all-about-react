@@ -1,12 +1,17 @@
+import '../Config/config.js'
 import User from '../Models/user.model.js';
 
 import AppError from '../Utils/error.util.js';
 
 import { generateToken, comparePasswords, hashPassword } from '../Services/user.service.js';
 
+import { sendWelcomeEmail } from '../Services/sendEmail.js';
+
+console.log("DB:", process.env.MONGODB_URL)
 export const register = async (req, res, next) => {
     try {
-        const { name, email, password } = req.body;
+        const { name,  password } = req.body;
+        const email = req.body.email.trim().toLowerCase();
 
         if (!name || !email || !password) {
             return next(new AppError('All fields are required', 400));
@@ -15,9 +20,12 @@ export const register = async (req, res, next) => {
 
         const userExist = await User.findOne({ email });
 
+         console.log("user exist in register",userExist)
         if (userExist) {
             return next(new AppError("User already exists", 400));
         }
+
+       
         const hashedPassword = await hashPassword(password);
         const user = await User.create({
             name,
@@ -25,6 +33,16 @@ export const register = async (req, res, next) => {
             password: hashedPassword
         });
 
+        if (!user || !user._id) {
+  return next(new AppError("User not saved properly", 500));
+}
+
+        try {
+            await sendWelcomeEmail(user.email, user.name);
+        } catch (error) {
+            console.log("Email sending failed", error.message)
+        }
+ 
         const token = generateToken(user);
 
         // console.log("user instance", user)

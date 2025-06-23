@@ -1,8 +1,11 @@
+// import {config} from 'dotenv';
+import dotenv from 'dotenv'
+dotenv.config(); // loading the .env file here
+
+console.log(" email :" ,process.env.MAIL_USER);
+console.log("PAss", process.env.MAIL_PASS);
 import app from './app.js';
 import dbConnection from './Config/dbConnect.js';
-import {config} from 'dotenv';
-
-config(); // loading the .env file here
 
 const PORT = process.env.PORT || 5000;
 
